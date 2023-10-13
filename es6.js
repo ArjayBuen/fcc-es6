@@ -309,3 +309,103 @@ class Vegetable{
    console.log(carrot.name); // Should display 'carrot'
 
 
+   class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer() {
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+const novel = new Book('anonymous');
+console.log(novel.writer);
+novel.writer = 'newAuthor';
+console.log(novel.writer);
+//The console would display the strings anonymous and newAuthor.
+
+
+// Only change code below this line
+class Thermostat{
+  constructor(farenheit){
+    this._farenheit=farenheit;
+  }
+  get temperature(){
+    return (5/9) * (this._farenheit-32);
+  }
+  set temperature(celcius){
+    return this._farenheit=(celcius * 9.0/ 5 + 32);
+  }
+}
+// Only change code above this line
+
+const thermos = new Thermostat(76); // Setting in Fahrenheit scale
+let temp = thermos.temperature; // 24.44 in Celsius
+thermos.temperature = 26;
+temp = thermos.temperature; // 26 in Celsius
+
+
+const uppercaseString = (string) => {
+  return string.toUpperCase();
+}
+
+const lowercaseString = (string) => {
+  return string.toLowerCase()
+}
+
+export {uppercaseString};
+export {lowercaseString};
+
+// export {uppercaseString,lowercaseString}; another way to export
+
+
+import {uppercaseString, lowercaseString} from './string_functions.js'; 
+// Only change code above this line
+
+uppercaseString("hello");
+lowercaseString("WORLD!");
+
+import * as stringFunctions from "./string_functions.js";
+// Only change code above this line
+
+stringFunctions.uppercaseString("hello");
+stringFunctions.lowercaseString("WORLD!");
+
+// function subtract(x, y) {
+//   return x - y;
+// }
+export default function subtract(x, y) {
+  return x - y;
+}
+// export default function (x, y) {
+//   return x - y;
+// } this is also applicable
+
+import subtract from "./math_functions.js" 
+// Only change code above this line
+
+subtract(7,4);
+
+
+
+const makeServerRequest = new Promise((resolve, reject) => {
+  // responseFromServer is set to true to represent a successful response from a server
+  let responseFromServer = true;
+    
+  if(responseFromServer) {
+    resolve("We got the data");
+  } else {  
+    reject("Data not received");
+  }
+});
+
+makeServerRequest.then(result => {
+  console.log(result);
+});
+makeServerRequest.catch(error =>{
+  console.log(error);
+});
